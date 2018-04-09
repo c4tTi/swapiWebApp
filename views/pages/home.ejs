@@ -1,0 +1,49 @@
+<!-- views/pages/home.ejs -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ../partials/header %>
+</header>
+
+<main>
+    <% if (!user) { %>
+        <p>Welcome! Please log in</a>.</p>
+        <p> Login with Username: yoda ,Password: jedi </p>
+    
+        <form action="/login" method="post">
+            <div>
+            <label>Username:</label>
+            <input type="text" name="username"/><br/>
+            </div>
+            <div>
+            <label>Password:</label>
+            <input type="password" name="password"/>
+            </div>
+            <div>
+            <input type="submit" value="Submit"/>
+            </div>
+        </form>
+        
+    <% } else { %>
+        <p>Hello, <%= user.username %> <a href="/logout">Log out</a> </p>
+        <p>Change to <a href="/main">Swapi View</a></p>
+    <% } %>
+
+
+    
+
+</main>
+
+<footer>
+    <% include ../partials/footer %>
+</footer>
+
+</body>
+</html>

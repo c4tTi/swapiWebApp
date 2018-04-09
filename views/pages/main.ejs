@@ -1,0 +1,111 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ../partials/headerloggedin %>
+</header>
+
+<main>
+   
+    <form id="tableForm" action="/ressource-filter" method="post">
+        <select class="selectpicker" data-style="btn-info" name="selectpicker">
+                <option value="films">Films</option>
+                <option value="people">People</option>
+                <option value="planets">Planets</option>
+                <option value="species">Species</option>
+                <option value="starships">Starships</option>
+                <option value="vehicles">Vehicles</option>
+        </select>
+        <input type="submit" value="Filter" />
+    </form>
+
+    <div class="row">
+
+        <div class="col-sm-4">    
+            <div class="well">
+                <% if (filter){%>
+                    <h1><%= filter%></h1>
+                <%}%>
+                
+                
+                <ul>
+                    <h2>
+                        
+                        <% if (filterRes) { %>
+                            <% filterRes.results.forEach(function(result){ %>
+                                <a href= <%=result.url%> target="_blank"><li> <%= result.name %> <%=result.title %> </li>
+                                </a>
+                            <% }); %>
+                        <% } %>
+
+
+
+                    </h2>   
+                </ul>
+            </div>
+        </div>
+        
+
+        <div class="col-sm-8" id="#result">        
+            <div class="jumbotron">
+                <ul>name </ul>
+                <ul>etc </ul>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+<footer>
+    <% include ../partials/footer %>
+</footer>
+
+<div id="select_div"><a href="#" id="select_link">Test</a></div> 
+
+</body>
+
+<script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>		
+<script type="text/javascript">
+    $(function(){				
+        $('#select_link').click(function(e){
+            e.preventDefault();
+            
+            var data = {};
+            data.id = "1";
+            data.ressource = "films";
+            console.log(data)
+            console.log(JSON.stringify(data))
+            
+            $.ajax({
+                type: 'GET',
+                //data: JSON.stringify(data),
+                data: data,
+                contentType: 'application/json',
+                url: 'id',						
+                success: function(data) {
+                    console.log('success');
+                    console.log(JSON.stringify(data));
+
+                    $('#result').html(data );
+                    //how to put the data into the correct form?
+                }
+            });
+
+        });				
+    });
+</script>
+
+</html>
+
+
+
+
+

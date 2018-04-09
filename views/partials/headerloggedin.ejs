@@ -1,0 +1,35 @@
+<!-- views/partials/header.ejs -->
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+    
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <span class="glyphicon glyphicon glyphicon-star"></span>
+                SWAPI WEB APP
+                <span class="glyphicon glyphicon glyphicon-star"></span>
+            </a>
+
+            <ul class="nav navbar-nav">
+                <li><a href="/main">Home</a></li>
+                <li><a href="/logout">Logout</a></li>
+
+                <li>
+                        
+                    <form action="/search" method="post">
+                        
+
+                        <!-- FIX THIS -->
+                        <span class="glyphicon glyphicon-search"></span>
+                        <input type="text" name="search"/>
+                        <input type="submit" value="search"/>
+                        
+                    </form>
+                </li>
+
+                
+            </ul>
+        </div>
+    
+    </div>
+    </nav>
